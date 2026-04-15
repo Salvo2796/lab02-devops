@@ -116,7 +116,7 @@ stages:
           FQDN=$(az container show \
             --resource-group $(resourceGroupName) \
             --name $(aciName) \
-            --query ipAddress.fqdn -o tsv)
+            --query ipAddress.fqdn -o tsv | tr -d '\r\n')
 
           if [ -z "$FQDN" ]; then
             echo "FQDN non disponibile"
